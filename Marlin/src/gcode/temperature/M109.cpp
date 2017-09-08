@@ -35,6 +35,10 @@
   #include "../../module/printcounter.h"
 #endif
 
+#if HAS_COLOR_LEDS
+  #include "../../feature/leds/leds.h"
+#endif
+
 /**
  * M109: Sxxx Wait for extruder(s) to reach temperature. Waits only when heating.
  *       Rxxx Wait for extruder(s) to reach temperature. Waits when heating and cooling.
