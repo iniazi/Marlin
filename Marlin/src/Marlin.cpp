@@ -44,7 +44,6 @@
 #endif
 #include <math.h>
 #include "libs/nozzle.h"
-#include "libs/duration_t.h"
 #include "gcode/parser.h"
 #include "gcode/gcode.h"
 
@@ -119,6 +118,9 @@
   #include "feature/tmc2130.h"
 #endif
 
+// PrintCounter or Stopwatch
+#include "module/printcounter.h"
+
 bool Running = true;
 
 /**
@@ -159,13 +161,6 @@ volatile bool wait_for_heatup = true;
 millis_t previous_cmd_ms = 0;
 static millis_t max_inactive_time = 0;
 static millis_t stepper_inactive_time = (DEFAULT_STEPPER_DEACTIVE_TIME) * 1000UL;
-
-// Print Job Timer
-#if ENABLED(PRINTCOUNTER)
-  PrintCounter print_job_timer = PrintCounter();
-#else
-  Stopwatch print_job_timer = Stopwatch();
-#endif
 
 #if ENABLED(Z_DUAL_ENDSTOPS)
   float z_endstop_adj;
