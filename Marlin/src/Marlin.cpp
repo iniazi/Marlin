@@ -445,8 +445,6 @@ void set_axis_is_at_home(const AxisEnum axis) {
  ***************** GCode Handlers *****************
  **************************************************/
 
-#include "gcode/stats/M31.h"              // M31: Get the time since the start of SD Print (or last M109)
-
 /**
  * Sensitive pin test for M42, M226
  */
