@@ -124,8 +124,6 @@ extern void gcode_M83();
 extern void gcode_M85();
 extern void gcode_M92();
 extern void gcode_M100();
-extern void gcode_M106();
-extern void gcode_M107();
 extern void gcode_M108();
 extern void gcode_M110();
 extern void gcode_M111();
@@ -549,10 +547,10 @@ void GcodeSuite::process_next_command() {
 
       #if FAN_COUNT > 0
         case 106: // M106: Fan On
-          gcode_M106();
+          M106();
           break;
         case 107: // M107: Fan Off
-          gcode_M107();
+          M107();
           break;
       #endif // FAN_COUNT > 0
 
