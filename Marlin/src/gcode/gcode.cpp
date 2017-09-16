@@ -124,10 +124,8 @@ extern void gcode_M83();
 extern void gcode_M85();
 extern void gcode_M92();
 extern void gcode_M100();
-extern void gcode_M108();
 extern void gcode_M110();
 extern void gcode_M111();
-extern void gcode_M112();
 extern void gcode_M113();
 extern void gcode_M114();
 extern void gcode_M115();
@@ -178,7 +176,6 @@ extern void gcode_M381();
 extern void gcode_M400();
 extern void gcode_M401();
 extern void gcode_M402();
-extern void gcode_M410();
 extern void gcode_M428();
 extern void gcode_M500();
 extern void gcode_M501();
@@ -499,15 +496,15 @@ void GcodeSuite::process_next_command() {
       #if DISABLED(EMERGENCY_PARSER)
 
         case 108: // M108: Cancel Waiting
-          gcode_M108();
+          M108();
           break;
 
         case 112: // M112: Emergency Stop
-          gcode_M112();
+          M112();
           break;
 
         case 410: // M410 quickstop - Abort all the planned moves.
-          gcode_M410();
+          M410();
           break;
 
       #endif
