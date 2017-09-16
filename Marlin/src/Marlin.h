@@ -230,4 +230,6 @@ void calculate_volumetric_multipliers();
 
 void set_axis_is_at_home(const AxisEnum axis);
 
+bool pin_is_protected(const int8_t pin);
+
 #endif // MARLIN_H
