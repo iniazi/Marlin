@@ -20,10 +20,20 @@
  *
  */
 
+#include "../../inc/MarlinConfig.h"
+
+#if ENABLED(SDSUPPORT)
+
+#include "../gcode.h"
+#include "../../sd/cardreader.h"
+
 /**
- * M29: Stop SD Write
- * Processed in write to file routine above
+ * M23: Open a file
  */
-void gcode_M29() {
-  // card.saving = false;
+void GcodeSuite::M23() {
+  // Simplify3D includes the size, so zero out all spaces (#7227)
+  for (char *fn = parser.string_arg; *fn; ++fn) if (*fn == ' ') *fn = '\0';
+  card.openFile(parser.string_arg, true);
 }
+
+#endif // SDSUPPORT

@@ -20,7 +20,16 @@
  *
  */
 
+#include "../../inc/MarlinConfig.h"
+
+#if ENABLED(SDSUPPORT)
+
+#include "../gcode.h"
+#include "../../sd/cardreader.h"
+
 /**
- * M28: Start SD Write
+ * M22: Release SD Card
  */
-void gcode_M28() { card.openFile(parser.string_arg, false); }
+void GcodeSuite::M22() { card.release(); }
+
+#endif // SDSUPPORT

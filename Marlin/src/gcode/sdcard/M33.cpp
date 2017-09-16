@@ -20,14 +20,28 @@
  *
  */
 
-/**
- * M25: Pause SD Print
- */
-void gcode_M25() {
-  card.pauseSDPrint();
-  print_job_timer.pause();
+#include "../../inc/MarlinConfig.h"
 
-  #if ENABLED(PARK_HEAD_ON_PAUSE)
-    enqueue_and_echo_commands_P(PSTR("M125")); // Must be enqueued with pauseSDPrint set to be last in the buffer
-  #endif
+#if ENABLED(SDSUPPORT) && ENABLED(LONG_FILENAME_HOST_SUPPORT)
+
+#include "../gcode.h"
+#include "../parser.h"
+#include "../../sd/cardreader.h"
+
+/**
+ * M33: Get the long full path of a file or folder
+ *
+ * Parameters:
+ *   <dospath> Case-insensitive DOS-style path to a file or folder
+ *
+ * Example:
+ *   M33 miscel~1/armchair/armcha~1.gco
+ *
+ * Output:
+ *   /Miscellaneous/Armchair/Armchair.gcode
+ */
+void GcodeSuite::M33() {
+  card.printLongPath(parser.string_arg);
 }
+
+#endif // SDSUPPORT && LONG_FILENAME_HOST_SUPPORT

@@ -20,10 +20,18 @@
  *
  */
 
+#include "../../inc/MarlinConfig.h"
+
+#if ENABLED(SDSUPPORT) && ENABLED(SDCARD_SORT_ALPHA) && ENABLED(SDSORT_GCODE)
+
+#include "../gcode.h"
+#include "../parser.h"
+#include "../../sd/cardreader.h"
+
 /**
  * M34: Set SD Card Sorting Options
  */
-void gcode_M34() {
+void GcodeSuite::M34() {
   if (parser.seen('S')) card.setSortOn(parser.value_bool());
   if (parser.seenval('F')) {
     const int v = parser.value_long();
@@ -31,3 +39,5 @@ void gcode_M34() {
   }
   //if (parser.seen('R')) card.setSortReverse(parser.value_bool());
 }
+
+#endif // SDSUPPORT && SDCARD_SORT_ALPHA && SDSORT_GCODE

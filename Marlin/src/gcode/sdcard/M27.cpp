@@ -20,7 +20,16 @@
  *
  */
 
+#include "../../inc/MarlinConfig.h"
+
+#if ENABLED(SDSUPPORT)
+
+#include "../gcode.h"
+#include "../../sd/cardreader.h"
+
 /**
- * M21: Init SD Card
+ * M27: Get SD Card status
  */
-void gcode_M21() { card.initsd(); }
+void GcodeSuite::M27() { card.getStatus(); }
+
+#endif // SDSUPPORT

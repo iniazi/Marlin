@@ -20,11 +20,19 @@
  *
  */
 
+#include "../../inc/MarlinConfig.h"
+
+#if ENABLED(SDSUPPORT)
+
+#include "../gcode.h"
+#include "../parser.h"
+#include "../../sd/cardreader.h"
+
 /**
- * M20: List SD card to serial output
+ * M928: Start SD Write
  */
-void gcode_M20() {
-  SERIAL_PROTOCOLLNPGM(MSG_BEGIN_FILE_LIST);
-  card.ls();
-  SERIAL_PROTOCOLLNPGM(MSG_END_FILE_LIST);
+void GcodeSuite::M928() {
+  card.openLogFile(parser.string_arg);
 }
+
+#endif // SDSUPPORT

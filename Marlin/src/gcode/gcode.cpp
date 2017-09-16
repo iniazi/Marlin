@@ -117,20 +117,7 @@ void GcodeSuite::dwell(millis_t time) {
 // Placeholders for non-migrated codes
 //
 extern void gcode_M18_M84();
-extern void gcode_M20();
-extern void gcode_M21();
-extern void gcode_M22();
-extern void gcode_M23();
-extern void gcode_M25();
-extern void gcode_M26();
-extern void gcode_M27();
-extern void gcode_M28();
-extern void gcode_M29();
-extern void gcode_M30();
 extern void gcode_M31();
-extern void gcode_M32();
-extern void gcode_M33();
-extern void gcode_M34();
 extern void gcode_M42();
 extern void gcode_M43();
 extern void gcode_M48();
@@ -160,7 +147,6 @@ extern void gcode_M118();
 extern void gcode_M119();
 extern void gcode_M120();
 extern void gcode_M121();
-extern void gcode_M125();
 extern void gcode_M126();
 extern void gcode_M127();
 extern void gcode_M128();
@@ -225,7 +211,6 @@ extern void gcode_M907();
 extern void gcode_M908();
 extern void gcode_M909();
 extern void gcode_M910();
-extern void gcode_M928();
 extern void gcode_M999();
 extern void gcode_T(uint8_t tmp_extruder);
 
@@ -431,42 +416,42 @@ void GcodeSuite::process_next_command() {
 
       #if ENABLED(SDSUPPORT)
         case 20: // M20: list SD card
-          gcode_M20(); break;
+          M20(); break;
         case 21: // M21: init SD card
-          gcode_M21(); break;
+          M21(); break;
         case 22: // M22: release SD card
-          gcode_M22(); break;
+          M22(); break;
         case 23: // M23: Select file
-          gcode_M23(); break;
+          M23(); break;
         case 24: // M24: Start SD print
           M24(); break;
         case 25: // M25: Pause SD print
-          gcode_M25(); break;
+          M25(); break;
         case 26: // M26: Set SD index
-          gcode_M26(); break;
+          M26(); break;
         case 27: // M27: Get SD status
-          gcode_M27(); break;
+          M27(); break;
         case 28: // M28: Start SD write
-          gcode_M28(); break;
+          M28(); break;
         case 29: // M29: Stop SD write
-          gcode_M29(); break;
+          M29(); break;
         case 30: // M30 <filename> Delete File
-          gcode_M30(); break;
+          M30(); break;
         case 32: // M32: Select file and start SD print
-          gcode_M32(); break;
+          M32(); break;
 
         #if ENABLED(LONG_FILENAME_HOST_SUPPORT)
           case 33: // M33: Get the long full path to a file or folder
-            gcode_M33(); break;
+            M33(); break;
         #endif
 
         #if ENABLED(SDCARD_SORT_ALPHA) && ENABLED(SDSORT_GCODE)
           case 34: // M34: Set SD card sorting options
-            gcode_M34(); break;
+            M34(); break;
         #endif // SDCARD_SORT_ALPHA && SDSORT_GCODE
 
         case 928: // M928: Start SD write
-          gcode_M928(); break;
+          M928(); break;
       #endif // SDSUPPORT
 
       case 31: // M31: Report time since the start of SD print or last M109
