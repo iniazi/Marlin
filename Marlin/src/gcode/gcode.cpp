@@ -117,10 +117,6 @@ void GcodeSuite::dwell(millis_t time) {
 // Placeholders for non-migrated codes
 //
 extern void gcode_M18_M84();
-extern void gcode_M75();
-extern void gcode_M76();
-extern void gcode_M77();
-extern void gcode_M78();
 extern void gcode_M80();
 extern void gcode_M81();
 extern void gcode_M82();
@@ -475,15 +471,15 @@ void GcodeSuite::process_next_command() {
       #endif // AUTO_BED_LEVELING_UBL && UBL_G26_MESH_VALIDATION
 
       case 75: // M75: Start print timer
-        gcode_M75(); break;
+        M75(); break;
       case 76: // M76: Pause print timer
-        gcode_M76(); break;
+        M76(); break;
       case 77: // M77: Stop print timer
-        gcode_M77(); break;
+        M77(); break;
 
       #if ENABLED(PRINTCOUNTER)
         case 78: // M78: Show print statistics
-          gcode_M78(); break;
+          M78(); break;
       #endif
 
       #if ENABLED(M100_FREE_MEMORY_WATCHER)
